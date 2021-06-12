@@ -1,42 +1,41 @@
-import { DRAW_INTERVAL_MS } from '../../shared/conf.js';
-import { fetchDrawing, putDrawing } from '../../shared/api.js';
-import { isDrawer } from './game-status.js';
-import { createDrawingCanvas, getCurrentDrawing, clearCanvas } from './canvas-actions.js';
+/**
+ * Hint #1: you should implement all those empty functions.
+ */
 
+import { DRAW_INTERVAL_MS } from '../../shared/conf.js';
+import { fetchDrawing } from '../../shared/api.js';
+import { isDrawer } from './game-status.js';
+
+/**
+ * Hint #2: there are some useful functions inside the canvas-actions.js file.
+ * you should prbably use them. :)
+ */
+import { } from './canvas-actions.js';
+
+// this is the actual element of the canvas. use it if you are the drawer:
 const drawCanvas = document.querySelector('.draw_canvas');
-const showImg = document.querySelector('.show_canvas');
+
+// this is an image element to draw a drawing of another player:
+const drawImage = document.querySelector('.show_canvas');
 
 export function initGameDrawing() {
-    createDrawingCanvas(drawCanvas);
-    startDrawingLoop();
     updateDrawing();
 }
 
 export function showCanvas() {
-    drawCanvas.style.display = 'block';
 }
 
 export function hideCanvas() {
-    drawCanvas.style.display = 'none';
-    clearCanvas();
 }
 
 export function showDrawingImage() {
-    showImg.style.display = 'block';
 }
 
 export function hideDrawingImage() {
-    showImg.style.display = 'none';
 }
 
-async function updateDrawing() {
-    if (isDrawer()) {
-        const drawingData = getCurrentDrawing();
-        putDrawing(drawingData);
-    } else {
-        const imgData = await fetchDrawing();
-        showImg.src = imgData;
-    }
+function updateDrawing() {
+
 }
 
 function startDrawingLoop() {

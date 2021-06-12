@@ -87,7 +87,7 @@ export async function fetchDrawing() {
     return null;
 }
 
-export async function putDrawing(drawingData) {
+export async function updateDrawing(draw) {
     const token = getToken();
 
     try {
@@ -95,7 +95,7 @@ export async function putDrawing(drawingData) {
             // const response = await fetch(`https://cors-anywhere.herokuapp.com/draw-something-demo.herokuapp.com/api/drawing`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json', token },
-            body: JSON.stringify({ draw: drawingData })
+            body: JSON.stringify({ draw })
         });
         if (response.status !== 200) {
             console.log('server Error', response);
